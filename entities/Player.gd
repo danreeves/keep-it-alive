@@ -18,7 +18,8 @@ func _process(delta: float) -> void:
 	if go_to:
 		var move = (go_to - get_translation())
 		# @TODO: maybe has a minimum speed
-		var linear_velocity = move_and_slide(move * 50 * delta)
+		var _linear_velocity = move_and_slide(move * 50 * delta)
+		look_at(go_to, Vector3(0,1,0))
 		
 func _input(event):
 	if event is InputEventMouseButton:
@@ -26,8 +27,17 @@ func _input(event):
 			var camera = get_parent().find_node("Camera")
 			var from = camera.project_ray_origin(event.position)
 			var to = from + camera.project_ray_normal(event.position) * ray_length
-			var collision = get_world().direct_space_state.intersect_ray(from, to)
+			var collide_with_bodies = true
+			var collide_with_area = true
+			var collision = get_world().direct_space_state.intersect_ray(from, to, [], 0x7FFFFFFF, collide_with_bodies, collide_with_area)
 			if not collision.empty():
+				var is_interactable = collision.collider.is_in_group("Interactables")
+				if is_interactable:
+					var is_picked_up = collision.collider.is_picked_up()
+					var is_colliding = collision.collider.is_colliding()
+					if is_picked_up or is_colliding:
+						return
+					
 				go_to = collision.position
 				go_to.y = 0
 				

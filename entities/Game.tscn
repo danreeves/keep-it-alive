@@ -14,7 +14,7 @@ transform = Transform( 0.92394, 0.237822, -0.299627, 0.107007, 0.591313, 0.79931
 far = 299.9
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8.689, 0, -6.433 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.233377, 0, 4.34358 )
 
 [node name="Condo" parent="." instance=ExtResource( 2 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 13.335, 0, 5.27 )
