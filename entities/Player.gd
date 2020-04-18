@@ -17,7 +17,11 @@ func _path_collision(node: Node, area: Area) -> void:
 func _process(delta: float) -> void:
 	if go_to:
 		var move = (go_to - get_translation())
-		# @TODO: maybe has a minimum speed
+		
+		# Goofy way of maintaining a minimum speed
+		while(move.length() < 5.5):
+			move = move * 1.1
+			
 		var _linear_velocity = move_and_slide(move * 50 * delta)
 		look_at(go_to, Vector3(0,1,0))
 		
