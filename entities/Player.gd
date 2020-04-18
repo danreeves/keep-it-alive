@@ -3,6 +3,7 @@ const ray_length = 100000000
 
 var go_to = null
 var path_colliders = []
+var is_holding_item = false
 
 func _ready() -> void:
 	pass
@@ -16,8 +17,8 @@ func _path_collision(node: Node, area: Area) -> void:
 func _process(delta: float) -> void:
 	if go_to:
 		var move = (go_to - get_translation())
-		print(move.length())
-		move_and_slide(move * 50 * delta)
+		# @TODO: maybe has a minimum speed
+		var linear_velocity = move_and_slide(move * 50 * delta)
 		
 func _input(event):
 	if event is InputEventMouseButton:
@@ -29,7 +30,6 @@ func _input(event):
 			if not collision.empty():
 				go_to = collision.position
 				go_to.y = 0
-				
 				
 				# Clean up old areas
 				for enemy in get_tree().get_nodes_in_group("pathing-colliders"):
@@ -46,3 +46,9 @@ func _input(event):
 				area.add_to_group("pathing-colliders")
 				get_parent().add_child(area)
 				area.connect("body_entered", self, "_path_collision", [area])
+
+func pickup():
+	is_holding_item = true
+	
+func drop():
+	is_holding_item = false
