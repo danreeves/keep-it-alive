@@ -19,6 +19,10 @@ config/name="keep-it-alive"
 run/main_scene="res://entities/Game.tscn"
 config/icon="res://icon.png"
 
+[display]
+
+window/dpi/allow_hidpi=true
+
 [rendering]
 
 quality/filters/msaa=4
