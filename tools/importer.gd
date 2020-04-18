@@ -11,7 +11,7 @@ func postimport(scene):
 
 func iterate(node: Node):
 	if node != null:
-
+		print_debug(node)
 		if node is MeshInstance && "-col" in node.get_parent().name:
 			print(node.name + " " + node.get_parent().name)
 			var collider = node.create_trimesh_collision()
