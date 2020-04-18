@@ -24,4 +24,3 @@ shape = SubResource( 1 )
 [node name="MeshInstance" type="MeshInstance" parent="CollisionShape"]
 mesh = SubResource( 2 )
 material/0 = SubResource( 3 )
-[connection signal="input_event" from="." to="." method="_on_KinematicBody_input_event"]
