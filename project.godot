@@ -16,9 +16,10 @@ _global_script_class_icons={
 [application]
 
 config/name="keep-it-alive"
-run/main_scene="res://Game.tscn"
+run/main_scene="res://entities/Game.tscn"
 config/icon="res://icon.png"
 
 [rendering]
 
+quality/filters/msaa=4
 environment/default_environment="res://default_env.tres"
