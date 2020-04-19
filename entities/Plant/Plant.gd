@@ -1,26 +1,26 @@
 extends Spatial
 
 const all_needs = [
-	{
-		"difficulty": 1,
-		"name": "light",
-		"kinds": ["sun", "lamp", "candle", "flashlight"],
-	},
+#	{
+#		"difficulty": 1,
+#		"name": "light",
+#		"kinds": ["sun", "lamp", "candle", "flashlight"],
+#	},
 	{
 		"difficulty": 1,
 		"name": "water",
 		"kinds": ["tap", "filtered", "sparkling", "champagne"],
 	},
-	{
-		"difficulty": 1,
-		"name": "food",
-		"kinds": ["pizza", "tacos"],
-	},
-	{
-		"difficulty": 1,
-		"name": "fertalizer",
-		"kinds": ["fertalizer", "coffee grounds", "banana peels", "poop"],
-	},
+#	{
+#		"difficulty": 1,
+#		"name": "food",
+#		"kinds": ["pizza", "tacos"],
+#	},
+#	{
+#		"difficulty": 1,
+#		"name": "fertalizer",
+#		"kinds": ["fertalizer", "coffee grounds", "banana peels", "poop"],
+#	},
 ]
 
 var difficulty = 1
@@ -42,8 +42,6 @@ func init(diff: int) -> void:
 	
 	randomize()
 	start_offset = rand_range(5, 25)
-	
-	start_offset = 1
 	
 	var start_offset_timer = Timer.new()
 	add_child(start_offset_timer)
