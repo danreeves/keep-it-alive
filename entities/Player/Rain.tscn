@@ -4,3 +4,9 @@
 
 [node name="Rain" instance=ExtResource( 1 )]
 transform = Transform( -1, 0, -3.25841e-07, 0, 1, 0, 3.25841e-07, 0, -1, 0, 0, 0 )
+
+[node name="Object_12" parent="Body" index="3"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.8531e-07, 0, -0.868332 )
+
+[node name="Object_21" parent="Default" index="0"]
+mesh = null

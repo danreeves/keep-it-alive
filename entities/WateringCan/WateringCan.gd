@@ -6,7 +6,6 @@ func _ready() -> void:
 	call_deferred("make_interactable")
 	
 func make_interactable():
-	print(Interactable)
 	var interactable = Interactable.instance()
 	interactable.make_interactable(self)
 #	interactable.debug = true
