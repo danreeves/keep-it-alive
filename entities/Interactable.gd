@@ -54,13 +54,15 @@ func is_picked_up() -> bool:
 	return get_parent() == player
 
 func reparent(node, new_parent):
-	var global_position = to_global(node.translation)
+	var old_global_position = global_transform.origin
 	node.get_parent().remove_child(node)
 	new_parent.add_child(node)
 	if new_parent == world:
-		node.translation = global_position
-		node.translation.y = 0
+		node.translation = old_global_position
+		node.translation.y = 1
+		node.rotation = player.rotation
 		player.drop()
 	else:
 		node.translation = Vector3(0, 2, -1)
+		node.rotation = Vector3(0, 0, 0)
 		player.pickup()
