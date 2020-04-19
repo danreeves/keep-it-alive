@@ -41,6 +41,11 @@ func _input(event):
 					var is_colliding = collision.collider.is_colliding()
 					if is_picked_up or is_colliding:
 						return
+					else:
+						if not is_holding_item:
+							go_to = collision.collider.translation
+							go_to.y = 0
+						return
 					
 				go_to = collision.position
 				go_to.y = 0

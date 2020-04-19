@@ -63,6 +63,6 @@ func reparent(node, new_parent):
 		node.rotation = player.rotation
 		player.drop()
 	else:
-		node.translation = Vector3(0, 2, -1)
+		node.translation = Vector3(0, 4, -1)
 		node.rotation = Vector3(0, 0, 0)
 		player.pickup()
