@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://entities/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://entities/Condo.tscn" type="PackedScene" id=2]
 [ext_resource path="res://entities/WateringCan.tscn" type="PackedScene" id=3]
 [ext_resource path="res://entities/Game.gd" type="Script" id=4]
+[ext_resource path="res://entities/Plant1.tscn" type="PackedScene" id=5]
 
 [node name="Game" type="Spatial"]
 script = ExtResource( 4 )
@@ -21,3 +22,6 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 13.335, 0, 5.27 )
 
 [node name="WateringCan" parent="." instance=ExtResource( 3 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.133, 0, 11.47 )
+
+[node name="Plant1" parent="." instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 4, 15 )

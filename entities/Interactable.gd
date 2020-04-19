@@ -13,7 +13,7 @@ var item = null
 var is_using = false
 
 func is_colliding():
-	return self.translation.distance_to(player.translation) < 1.8
+	return self.translation.distance_to(player.translation) < 2.2
 
 func _ready() -> void:
 	world = get_tree().get_root().get_node("Game")
@@ -92,7 +92,7 @@ func reparent(node, new_parent):
 		player.drop()
 	
 	if new_parent == player:
-		node.translation = Vector3(0, 4, -1)
+		node.translation = Vector3(0, 4, -1.5)
 		node.rotation = Vector3(0, 0, 0)
 		player.pickup(item)
 

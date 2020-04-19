@@ -29,6 +29,8 @@ func _process(delta: float) -> void:
 			
 		var _linear_velocity = move_and_slide(move * 50 * delta)
 		look_at(go_to, Vector3(0,1,0))
+		rotation.x = 0
+		rotation.z = 0
 		
 func _input(event):
 	if event is InputEventMouseButton:

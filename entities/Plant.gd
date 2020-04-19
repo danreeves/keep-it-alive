@@ -31,7 +31,9 @@ var timer = null
 var current_need = null
 
 func _ready() -> void:
-	pass # Replace with function body.
+	var PlantModel = load("res://entities/Plant1.tscn")
+	var model = PlantModel.instance()
+	add_child(model)
 
 func init(diff: int) -> void:
 	difficulty = diff
