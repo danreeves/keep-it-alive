@@ -2,15 +2,15 @@
 
 [ext_resource path="res://entities/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://entities/Condo.tscn" type="PackedScene" id=2]
-[ext_resource path="res://entities/Interactable.tscn" type="PackedScene" id=3]
-
-[sub_resource type="CubeMesh" id=1]
-size = Vector3( 1, 1, 1 )
+[ext_resource path="res://entities/WateringCan.tscn" type="PackedScene" id=3]
+[ext_resource path="res://entities/Game.gd" type="Script" id=4]
 
 [node name="Game" type="Spatial"]
+script = ExtResource( 4 )
 
 [node name="Camera" type="Camera" parent="."]
 transform = Transform( 0.92394, 0.237822, -0.299627, 0.107007, 0.591313, 0.799311, 0.367267, -0.770578, 0.520889, 0, 21.8161, 17.6135 )
+current = true
 far = 299.9
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
@@ -19,18 +19,5 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.233377, 0, 4.34358 )
 [node name="Condo" parent="." instance=ExtResource( 2 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 13.335, 0, 5.27 )
 
-[node name="Interactable" parent="." instance=ExtResource( 3 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 10 )
-
-[node name="MeshInstance" type="MeshInstance" parent="Interactable"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0 )
-mesh = SubResource( 1 )
-material/0 = null
-
-[node name="Interactable2" parent="." instance=ExtResource( 3 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.18358, 1, 10 )
-
-[node name="MeshInstance" type="MeshInstance" parent="Interactable2"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0 )
-mesh = SubResource( 1 )
-material/0 = null
+[node name="WateringCan" parent="." instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.133, 0, 11.47 )
