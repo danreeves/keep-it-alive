@@ -11,11 +11,11 @@ const all_needs = [
 		"name": "water",
 		"kinds": ["tap", "filtered", "sparkling", "champagne"],
 	},
-#	{
-#		"difficulty": 1,
-#		"name": "food",
-#		"kinds": ["pizza", "tacos"],
-#	},
+	{
+		"difficulty": 1,
+		"name": "food",
+		"kinds": ["pizza", "tacos"],
+	},
 #	{
 #		"difficulty": 1,
 #		"name": "fertalizer",
@@ -29,12 +29,19 @@ var interval = 45
 var start_offset = 10
 var timer = null
 var current_need = null
+var need_sprite = null
 
 func _ready() -> void:
-	var PlantModel = load("res://entities/Plant/Models/Plant1.tscn")
-	var model = PlantModel.instance()
-	add_child(model)
+	var PlantModel = load("res://entities/Plant/Models/Plants/Plant_1.tscn")
+	var PotModel = load("res://entities/Plant/Models/Pots/Pot_1.tscn")
+	var plant = PlantModel.instance()
+	var pot = PotModel.instance()
+	add_child(plant)
+	add_child(pot)
 
+func _process(_delta: float) -> void:
+	pass
+	
 func init(diff: int) -> void:
 	difficulty = diff
 	get_needs_for_difficulty(difficulty)
@@ -115,11 +122,23 @@ func set_current_need():
 	needs.shuffle()
 	current_need = needs.front()
 	print("Ì†ºÌΩÉPlant has a new need!", self, current_need)
-	# @TODO: Add plant alert
+	need_sprite = Sprite3D.new()
+	need_sprite.texture = load("res://needs/wants-%s.png" % [current_need.name])
+	need_sprite.offset = Vector2(100, 100)
+	need_sprite.billboard = SpatialMaterial.BILLBOARD_ENABLED
+	add_child(need_sprite)
 
 func satisfy_need():
 	print(current_need.name, ' satisfied')
 	current_need = null
 	timer.paused = false
 	print("restarting timer. %d seconds left" % [timer.time_left])
-	# @TODO: Remove plant alert
+	need_sprite.texture = load("res://needs/success.png")
+	var alert_timer = Timer.new()
+	add_child(alert_timer)
+	alert_timer.connect("timeout", self, "alert_need_satisfied", [alert_timer])
+	alert_timer.start(2)
+
+func alert_need_satisfied(alert_timer):
+	need_sprite.queue_free()
+	alert_timer.queue_free()

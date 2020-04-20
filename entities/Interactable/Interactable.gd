@@ -87,9 +87,11 @@ func reparent(node, new_parent):
 	new_parent.add_child(node)
 	if new_parent == world:
 		node.translation = old_global_position
-		node.translation.y = 1
+		node.translation.y = 0
 		node.rotation = player.rotation
 		player.drop()
+		is_using = false
+		picking_up = false
 	
 	if new_parent == player:
 		node.translation = Vector3(0, 4, -1.5)
@@ -114,7 +116,9 @@ func make_interactable(node):
 	item = node
 
 func _on_Interactable_body_entered(body: Node) -> void:
-	if body == player:
+	print(self, is_using, picking_up)
+	print(player.go_to, translation, player.go_to == translation)
+	if body == player and ((is_using or picking_up) or player.go_to == translation):
 		# When dropping an item cancel player movement
 		# Clean up old nav colliders
 		for enemy in get_tree().get_nodes_in_group("pathing-colliders"):
@@ -124,3 +128,11 @@ func _on_Interactable_body_entered(body: Node) -> void:
 func printl(string):
 	if debug:
 		print(string)
+
+
+func _on_Interactable_mouse_entered() -> void:
+	find_node("Hover").visible = true
+
+
+func _on_Interactable_mouse_exited() -> void:
+	find_node("Hover").visible = false
