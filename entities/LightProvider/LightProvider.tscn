@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://entities/LightProvider/LightProvider.gd" type="Script" id=1]
+
+[node name="LightProvider" type="Area"]
+input_ray_pickable = false
+monitorable = false
+script = ExtResource( 1 )

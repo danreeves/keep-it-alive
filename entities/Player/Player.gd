@@ -75,14 +75,12 @@ func _input(event):
 				area.connect("body_entered", self, "_path_collision", [area])
 
 func pickup(item):
-	print("pickup: ", item)
 	is_holding_item = true
 	held_item = item
 	find_node("Rain").visible = false
 	find_node("Rain_Holding").visible = true
 	
 func drop():
-	print_debug("wot")
 	is_holding_item = false
 	held_item = null
 	find_node("Rain").visible = true

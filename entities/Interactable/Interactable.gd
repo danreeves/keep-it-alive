@@ -13,7 +13,9 @@ var item = null
 var is_using = false
 
 func is_colliding():
-	return self.translation.distance_to(player.translation) < 2.2
+	var location_on_floor = self.translation
+	location_on_floor.y = 0
+	return location_on_floor.distance_to(player.translation) < 2.2
 
 func _ready() -> void:
 	world = get_tree().get_root().get_node("Game")
@@ -22,11 +24,7 @@ func _ready() -> void:
 	add_to_group("Interactables")
 
 func _physics_process(_delta: float) -> void:
-#	is_using = true
-#	if debug:
-#		printl(is_using)
 	if is_using and is_colliding() and player.is_holding_item and not is_picked_up():
-		printl("can use")
 		if player.held_item.has_method("use"):
 			player.held_item.use(item)
 			is_using = false
@@ -67,16 +65,12 @@ func _input(event):
 						if collision.collider == self:
 							if self.is_picked_up():
 								picking_up = not is_picked_up()
-								printl("put down")
 							else:
-								printl("held item check")
 								if player.held_item.has_method("use"):
 									is_using = true
-									printl("use held item")
 					else:
 						if collision.collider == self:
 							picking_up = not is_picked_up()
-							printl("pick up")
 						
 func is_picked_up() -> bool:
 	return get_parent() == player
@@ -116,19 +110,18 @@ func make_interactable(node):
 	item = node
 
 func _on_Interactable_body_entered(body: Node) -> void:
-	print(self, is_using, picking_up)
-	print(player.go_to, translation, player.go_to == translation)
-	if body == player and ((is_using or picking_up) or player.go_to == translation):
+	# Set the ys to 0 so the check doesnt care about things being off the ground
+	var player_go_to = player.go_to
+	if player_go_to:
+		player_go_to.y = 0
+	var current_location = translation
+	current_location.y = 0
+	if body == player and ((is_using or picking_up) or player_go_to == current_location):
 		# When dropping an item cancel player movement
 		# Clean up old nav colliders
 		for enemy in get_tree().get_nodes_in_group("pathing-colliders"):
 			enemy.queue_free()
 		player.go_to = null
-
-func printl(string):
-	if debug:
-		print(string)
-
 
 func _on_Interactable_mouse_entered() -> void:
 	find_node("Hover").visible = true

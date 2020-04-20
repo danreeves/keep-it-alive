@@ -8,13 +8,13 @@ func _ready() -> void:
 func make_interactable():
 	var interactable = Interactable.instance()
 	interactable.make_interactable(self)
-#	interactable.debug = true
 
-func use(plant):
-	print("calling use")
-	var current_need = plant.current_need
-	if current_need and current_need.name == "food" and plant.difficulty == 1:
-		plant.satisfy_need()
-		print("Satisfying need")
+func use(item):
+	if item.is_in_group("Plants"):
+		var current_need = item.current_need
+		if current_need and current_need.name == "food" and item.difficulty == 1:
+			item.satisfy_need()
+		else:
+			print("The plant doesn't want pizza!! dumb plant")
 	else:
-		print("The plant doesn't want pizza!! dumb plant")
+		print("you can't use this on that")

@@ -4,21 +4,21 @@ const num_plants = 12
 const num_pots = 8
 
 const all_needs = [
+	{
+		"difficulty": 1,
+		"name": "light",
+		"kinds": ["sun", "lamp", "candle", "flashlight"],
+	},
 #	{
 #		"difficulty": 1,
-#		"name": "light",
-#		"kinds": ["sun", "lamp", "candle", "flashlight"],
+#		"name": "water",
+#		"kinds": ["tap", "filtered", "sparkling", "champagne"],
 #	},
-	{
-		"difficulty": 1,
-		"name": "water",
-		"kinds": ["tap", "filtered", "sparkling", "champagne"],
-	},
-	{
-		"difficulty": 1,
-		"name": "food",
-		"kinds": ["pizza", "tacos"],
-	},
+#	{
+#		"difficulty": 1,
+#		"name": "food",
+#		"kinds": ["pizza", "tacos"],
+#	},
 #	{
 #		"difficulty": 1,
 #		"name": "fertalizer",
@@ -42,7 +42,6 @@ func _ready() -> void:
 	var plant_num = int(rand_range(1, num_plants))
 	randomize()
 	var pot_num = int(rand_range(1, num_pots))
-	print("plant: %d, pot: %d"% [plant_num, pot_num])
 	var PlantModel = load("res://entities/Plant/Models/Plants/Plant_%d.tscn" % [plant_num])
 	var PotModel = load("res://entities/Plant/Models/Pots/Pot_%d.tscn" % [pot_num])
 	plant_model = PlantModel.instance()
@@ -65,7 +64,6 @@ func init(diff: int) -> void:
 	add_child(start_offset_timer)
 	start_offset_timer.connect("timeout", self, "start_interval", [start_offset_timer])
 	start_offset_timer.start(start_offset)
-	print("Starting timer for %d seconds" % [start_offset])
 	
 func get_needs_for_difficulty(diff):
 	# super random
@@ -102,7 +100,6 @@ func get_interval_for_difficulty(diff):
 			interval = 20
 
 func start_interval(start_offset_timer):
-	print("Start Interval Over")
 	remove_child(start_offset_timer)
 	start_offset_timer.queue_free()
 
@@ -112,17 +109,14 @@ func start_interval(start_offset_timer):
 	add_child(timer)
 	timer.connect("timeout", self, "set_current_need")
 	timer.start(interval)
-	print("Plant need interval started, %d seconds" % [interval], self)
 	
 	# Create first need
 	set_current_need()
 
 func set_current_need():
 	if current_need:
-		print("Plant already has a need", self, current_need)
 		return
 	if needs.size() < 1:
-		print("Plant has no needs", self)
 		return
 		
 	# Pause the need timer
@@ -132,7 +126,6 @@ func set_current_need():
 	randomize()
 	needs.shuffle()
 	current_need = needs.front()
-	print("í ¼í½ƒPlant has a new need!", self, current_need)
 	need_sprite = Sprite3D.new()
 	need_sprite.texture = load("res://needs/wants-%s.png" % [current_need.name])
 	need_sprite.offset = Vector2(100, 100)
@@ -140,10 +133,8 @@ func set_current_need():
 	add_child(need_sprite)
 
 func satisfy_need():
-	print(current_need.name, ' satisfied')
 	current_need = null
 	timer.paused = false
-	print("restarting timer. %d seconds left" % [timer.time_left])
 	need_sprite.texture = load("res://needs/success.png")
 	var alert_timer = Timer.new()
 	add_child(alert_timer)
@@ -155,7 +146,6 @@ func alert_need_satisfied(alert_timer):
 	alert_timer.queue_free()
 
 func lose_life():
-	print("losing life", lives - 1)
 	lives -= 1
 	if lives == 0:
 		current_need = null
