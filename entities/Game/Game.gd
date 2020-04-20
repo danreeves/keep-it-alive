@@ -19,4 +19,3 @@ func init() -> void:
 	interactable_container.debug = true
 	
 	first_plant.init(1)
-	print(first_plant.needs)

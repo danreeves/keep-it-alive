@@ -21,7 +21,7 @@ func _ready() -> void:
 	
 func _process(delta: float) -> void:
 	if not paused:
-		timer += delta * 100
+		timer += delta
 		
 	clock_hand.rotation_degrees = int((360/60) * timer)
 	
@@ -29,6 +29,7 @@ func _process(delta: float) -> void:
 		screen_wipe.modulate = Color(1, 1, 1, (1.0 - (60 - timer) / 10))
 		
 	if timer >= 60:
+		timer = 0
 		plants_checked_for_day = false
 		paused = true
 		if player.is_holding_item:
@@ -37,19 +38,21 @@ func _process(delta: float) -> void:
 		player.go_to = null
 		player.translation = wake_up_point.translation
 		
+		new_day_timer += delta
+		
+	if not plants_checked_for_day:
+		var plants = get_tree().get_nodes_in_group("Plants")
+		for plant in plants:
+			if plant.current_need:
+				plant.lose_life()
+		plants_checked_for_day = true
+				
+	if new_day_timer > 0:
 		new_day_timer += delta * 3
 		screen_wipe.modulate = Color(1, 1, 1, (10 - new_day_timer) / 10)
-		
-#		if not plants_checked_for_day:
-#			print("checking plants")
-#			var plants = get_tree().get_nodes_in_group("Plants")
-#			for plant in plants:
-#				if plant.current_need:
-#					plant.lose_life()
-#
-		if new_day_timer >= 10:
-			timer = 0
-			new_day_timer = 0
-			screen_wipe.modulate = Color(1, 1, 1, 0)
-			paused = false
-			plants_checked_for_day = true
+
+	if new_day_timer >= 10:
+		timer = 0
+		new_day_timer = 0
+		screen_wipe.modulate = Color(1, 1, 1, 0)
+		paused = false
