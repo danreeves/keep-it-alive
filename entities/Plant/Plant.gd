@@ -1,5 +1,8 @@
 extends Spatial
 
+const num_plants = 12
+const num_pots = 8
+
 const all_needs = [
 #	{
 #		"difficulty": 1,
@@ -30,13 +33,21 @@ var start_offset = 10
 var timer = null
 var current_need = null
 var need_sprite = null
+var lives = 3
+var plant_model = null
 
 func _ready() -> void:
-	var PlantModel = load("res://entities/Plant/Models/Plants/Plant_1.tscn")
-	var PotModel = load("res://entities/Plant/Models/Pots/Pot_1.tscn")
-	var plant = PlantModel.instance()
+	add_to_group("Plants")
+	randomize()
+	var plant_num = int(rand_range(1, num_plants))
+	randomize()
+	var pot_num = int(rand_range(1, num_pots))
+	print("plant: %d, pot: %d"% [plant_num, pot_num])
+	var PlantModel = load("res://entities/Plant/Models/Plants/Plant_%d.tscn" % [plant_num])
+	var PotModel = load("res://entities/Plant/Models/Pots/Pot_%d.tscn" % [pot_num])
+	plant_model = PlantModel.instance()
 	var pot = PotModel.instance()
-	add_child(plant)
+	add_child(plant_model)
 	add_child(pot)
 
 func _process(_delta: float) -> void:
@@ -142,3 +153,13 @@ func satisfy_need():
 func alert_need_satisfied(alert_timer):
 	need_sprite.queue_free()
 	alert_timer.queue_free()
+
+func lose_life():
+	print("losing life", lives - 1)
+	lives -= 1
+	if lives == 0:
+		current_need = null
+		remove_child(timer)
+		remove_child(plant_model)
+		timer.queue_free()
+		plant_model.queue_free()

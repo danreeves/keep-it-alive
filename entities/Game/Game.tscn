@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://entities/Player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://entities/Condo/Condo.tscn" type="PackedScene" id=2]
 [ext_resource path="res://entities/WateringCan/WateringCan.tscn" type="PackedScene" id=3]
 [ext_resource path="res://entities/Game/Game.gd" type="Script" id=4]
 [ext_resource path="res://entities/Pizza/Pizza.tscn" type="PackedScene" id=5]
+[ext_resource path="res://entities/Clock/Clock.tscn" type="PackedScene" id=6]
 
 [node name="Game" type="Spatial"]
 script = ExtResource( 4 )
@@ -25,3 +26,8 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.60064, 0, 11.47 )
 
 [node name="Pizza" parent="." instance=ExtResource( 5 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.66198, 0.186952, 10.7802 )
+
+[node name="Clock" parent="." instance=ExtResource( 6 )]
+
+[node name="WakeUpPoint" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 29.4221, 0, -13.5541 )
