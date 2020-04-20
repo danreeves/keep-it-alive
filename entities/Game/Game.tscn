@@ -30,7 +30,7 @@ transform = Transform( -0.593644, 0, -0.804728, 0, 1, 0, 0.804728, 0, -0.593644,
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 13.335, 0, 5.27 )
 
 [node name="WateringCan" parent="." instance=ExtResource( 3 )]
-transform = Transform( -0.173648, 0, -0.984808, 0, 1, 0, 0.984808, 0, -0.173648, -4.74019, 3.55099, 14.5551 )
+transform = Transform( -0.173648, 0, -0.984808, 0, 1, 0, 0.984808, 0, -0.173648, -4.46187, 3.55099, 14.5551 )
 
 [node name="Pizza" parent="." instance=ExtResource( 5 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12.1125, 1.60759, 17.152 )
@@ -41,7 +41,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12.1125, 1.60759, 17.152 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 29.4221, 0, -13.5541 )
 
 [node name="Candle" parent="." instance=ExtResource( 7 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5.11137, 3.39058, 2.11738 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4.71949, 3.39058, 2.11738 )
 
 [node name="FilteredWater" parent="." instance=ExtResource( 8 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5.64882, 1.63705, 16.3883 )

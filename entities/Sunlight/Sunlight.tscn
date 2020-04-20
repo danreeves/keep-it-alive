@@ -8,6 +8,8 @@ extents = Vector3( 5, 5, 7 )
 [node name="Sunlight" type="Spatial"]
 
 [node name="LightProvider" parent="." instance=ExtResource( 1 )]
+collision_layer = 2
+collision_mask = 2
 kind = "sun"
 
 [node name="CollisionShape" type="CollisionShape" parent="LightProvider"]
