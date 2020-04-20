@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://entities/Clock/Clock.gd" type="Script" id=1]
-[ext_resource path="res://img/clock-face.png" type="Texture" id=2]
-[ext_resource path="res://img/clock-hand.png" type="Texture" id=3]
+[ext_resource path="res://img/eclockicons.png" type="Texture" id=2]
+[ext_resource path="res://img/eclockhandicons.png" type="Texture" id=3]
 [ext_resource path="res://img/black-pixel.png" type="Texture" id=4]
 
 [node name="Clock" type="Node2D"]
@@ -10,7 +10,7 @@ script = ExtResource( 1 )
 
 [node name="ClockFace" type="Sprite" parent="."]
 position = Vector2( 2368.8, 176.418 )
-scale = Vector2( 2.10392, 2.10392 )
+scale = Vector2( 1.48498, 1.48498 )
 texture = ExtResource( 2 )
 
 [node name="ClockHand" type="Sprite" parent="ClockFace"]

@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://entities/Ramen/Ramen.gd" type="Script" id=1]
+[ext_resource path="res://entities/Ramen/Ramen_model.tscn" type="PackedScene" id=2]
+
+[node name="Ramen" type="Spatial"]
+script = ExtResource( 1 )
+
+[node name="noodles" parent="." instance=ExtResource( 2 )]

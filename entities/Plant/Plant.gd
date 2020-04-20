@@ -1,5 +1,7 @@
 extends Spatial
 
+export (bool) var debug = false
+
 const num_plants = 12
 const num_pots = 8
 
@@ -7,23 +9,18 @@ const all_needs = [
 	{
 		"difficulty": 1,
 		"name": "light",
-		"kinds": ["sun", "lamp", "candle", "flashlight"],
+		"kinds": ["sun", "lamp", "candle"],
 	},
-#	{
-#		"difficulty": 1,
-#		"name": "water",
-#		"kinds": ["tap", "filtered", "sparkling", "champagne"],
-#	},
-#	{
-#		"difficulty": 1,
-#		"name": "food",
-#		"kinds": ["pizza", "tacos"],
-#	},
-#	{
-#		"difficulty": 1,
-#		"name": "fertalizer",
-#		"kinds": ["fertalizer", "coffee grounds", "banana peels", "poop"],
-#	},
+	{
+		"difficulty": 1,
+		"name": "water",
+		"kinds": ["tap", "filtered", "sparkling", "champagne"],
+	},
+	{
+		"difficulty": 1,
+		"name": "food",
+		"kinds": ["pizza", "ramen"],
+	},
 ]
 
 var difficulty = 1
@@ -46,17 +43,24 @@ func _ready() -> void:
 	var PotModel = load("res://entities/Plant/Models/Pots/Pot_%d.tscn" % [pot_num])
 	plant_model = PlantModel.instance()
 	var pot = PotModel.instance()
+	need_sprite = Sprite3D.new()
+	need_sprite.offset = Vector2(100, 100)
+	need_sprite.billboard = SpatialMaterial.BILLBOARD_ENABLED
 	add_child(plant_model)
 	add_child(pot)
+	add_child(need_sprite)
 
 func _process(_delta: float) -> void:
+	if debug:
+		if timer:
+			print(timer.time_left)
 	pass
 	
 func init(diff: int) -> void:
 	difficulty = diff
 	get_needs_for_difficulty(difficulty)
 	get_interval_for_difficulty(difficulty)
-	
+
 	randomize()
 	start_offset = rand_range(5, 25)
 	
@@ -72,17 +76,19 @@ func get_needs_for_difficulty(diff):
 	
 	match diff:
 		1:
-			var level_1_needs = []
-			for need in all_needs:
-				if need.difficulty == 1:
-					level_1_needs.append(need)
-			needs = [level_1_needs.pop_front()]
+			var curr_needs = all_needs.duplicate(true)
+			needs = [curr_needs.pop_front()]
 		2:
-			var level_1_needs = []
-			for need in all_needs:
-				if need.difficulty == 1:
-					level_1_needs.append(need)
-			needs = [level_1_needs.pop_front(), level_1_needs.pop_front()]
+			var curr_needs = all_needs.duplicate(true)
+			needs = [curr_needs.pop_front(), curr_needs.pop_front()]
+		3:
+			var curr_needs = all_needs.duplicate(true)
+			needs = [curr_needs.pop_front(), curr_needs.pop_front()]
+			for need in needs:
+				randomize()
+				need.kinds.shuffle()
+				need.kinds = [need.kinds.pop_front()]
+	print(needs)
 
 func get_interval_for_difficulty(diff):
 	match diff:
@@ -126,23 +132,21 @@ func set_current_need():
 	randomize()
 	needs.shuffle()
 	current_need = needs.front()
-	need_sprite = Sprite3D.new()
-	need_sprite.texture = load("res://needs/wants-%s.png" % [current_need.name])
-	need_sprite.offset = Vector2(100, 100)
-	need_sprite.billboard = SpatialMaterial.BILLBOARD_ENABLED
-	add_child(need_sprite)
+	need_sprite.visible = true
+	need_sprite.texture = load("res://img/e%sicons.png" % [current_need.name])
 
 func satisfy_need():
 	current_need = null
 	timer.paused = false
-	need_sprite.texture = load("res://needs/success.png")
+	need_sprite.visible = true
+	need_sprite.texture = load("res://img/ehearticons.png")
 	var alert_timer = Timer.new()
 	add_child(alert_timer)
 	alert_timer.connect("timeout", self, "alert_need_satisfied", [alert_timer])
 	alert_timer.start(2)
 
 func alert_need_satisfied(alert_timer):
-	need_sprite.queue_free()
+	need_sprite.visible = false
 	alert_timer.queue_free()
 
 func lose_life():

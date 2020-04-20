@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://entities/Flashlight/Flashlight.gd" type="Script" id=1]
+[ext_resource path="res://entities/Flashlight/Flashlight_model.tscn" type="PackedScene" id=2]
+[ext_resource path="res://entities/LightProvider/LightProvider.tscn" type="PackedScene" id=3]
+
+[sub_resource type="CapsuleShape" id=1]
+
+[node name="Flashlight" type="Spatial"]
+script = ExtResource( 1 )
+
+[node name="LightProvider" parent="." instance=ExtResource( 3 )]
+
+[node name="CollisionShape" type="CollisionShape" parent="LightProvider"]
+transform = Transform( 1, 0, 0, 0, 0.926134, 0.377194, 0, -0.377194, 0.926134, 0, -0.219369, -2.60106 )
+shape = SubResource( 1 )
+
+[node name="flashlight" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.98739 )
+
+[node name="SpotLight" type="SpotLight" parent="."]
+transform = Transform( 1, 0, 0, 0, 0.937872, 0.346981, 0, -0.346981, 0.937872, 0.111613, 0.115569, -1.64474 )
+light_energy = 3.0
+light_indirect_energy = 0.0
+light_specular = 0.0
+shadow_enabled = true
+spot_range = 100.0
+spot_angle = 39.8
+spot_angle_attenuation = 1.46408

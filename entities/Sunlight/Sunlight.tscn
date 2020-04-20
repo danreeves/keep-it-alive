@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://entities/LightProvider/LightProvider.tscn" type="PackedScene" id=1]
+
+[sub_resource type="BoxShape" id=1]
+extents = Vector3( 5, 5, 7 )
+
+[node name="Sunlight" type="Spatial"]
+
+[node name="LightProvider" parent="." instance=ExtResource( 1 )]
+kind = "sun"
+
+[node name="CollisionShape" type="CollisionShape" parent="LightProvider"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0 )
+shape = SubResource( 1 )
+
+[node name="DirectionalLight" type="DirectionalLight" parent="."]
+transform = Transform( -1.16263e-07, 0.700536, -0.713617, 1.14132e-07, 0.713617, 0.700536, 1, 0, -1.62921e-07, -7.39292, 15.5281, 0 )
+light_energy = 0.1

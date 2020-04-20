@@ -2,8 +2,8 @@
 
 importer="texture"
 type="StreamTexture"
-path.s3tc="res://.import/clock-face.png-23d67aa824fafa074e80af5f70d60179.s3tc.stex"
-path.etc2="res://.import/clock-face.png-23d67aa824fafa074e80af5f70d60179.etc2.stex"
+path.s3tc="res://.import/eclockhandicons.png-ed00ecee0dee73f4163521762a778998.s3tc.stex"
+path.etc2="res://.import/eclockhandicons.png-ed00ecee0dee73f4163521762a778998.etc2.stex"
 metadata={
 "imported_formats": [ "s3tc", "etc2" ],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://img/clock-face.png"
-dest_files=[ "res://.import/clock-face.png-23d67aa824fafa074e80af5f70d60179.s3tc.stex", "res://.import/clock-face.png-23d67aa824fafa074e80af5f70d60179.etc2.stex" ]
+source_file="res://img/eclockhandicons.png"
+dest_files=[ "res://.import/eclockhandicons.png-ed00ecee0dee73f4163521762a778998.s3tc.stex", "res://.import/eclockhandicons.png-ed00ecee0dee73f4163521762a778998.etc2.stex" ]
 
 [params]
 

@@ -10,6 +10,8 @@ script = ExtResource( 1 )
 
 [node name="LightConsumer" type="StaticBody" parent="."]
 input_ray_pickable = false
+collision_layer = 2
+collision_mask = 2
 
 [node name="CollisionShapePlant" type="CollisionShape" parent="LightConsumer"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.362997, 0 )

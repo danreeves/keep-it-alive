@@ -12,7 +12,7 @@ func make_interactable():
 func use(item):
 	if item.is_in_group("Plants"):
 		var current_need = item.current_need
-		if current_need and current_need.name == "food" and current_need.kinds.has("pizza"):
+		if current_need and current_need.name == "food" and current_need.kinds.has("ramen"):
 			item.satisfy_need()
 		else:
 			print("The plant doesn't want pizza!! dumb plant")

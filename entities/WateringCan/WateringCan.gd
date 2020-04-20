@@ -12,9 +12,9 @@ func make_interactable():
 func use(item):
 	if item.is_in_group("Plants"):
 		var current_need = item.current_need
-		if current_need and current_need.name == "water" and item.difficulty == 1:
+		if current_need and current_need.name == "water" and current_need.kinds.has("tap"):
 			item.satisfy_need()
-		else:
-			print("The plant doesn't want water!! dumb plant")
+			return
+		print("The plant doesn't want tap water!")
 	else:
 		print("you can't use this on that")

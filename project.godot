@@ -24,6 +24,8 @@ config/icon="res://icon.png"
 window/size/width=2556
 window/size/height=1440
 window/dpi/allow_hidpi=true
+window/stretch/mode="viewport"
+window/stretch/aspect="keep"
 
 [rendering]
 

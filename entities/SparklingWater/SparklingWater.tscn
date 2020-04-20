@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://entities/SparklingWater/SparklingWater.gd" type="Script" id=1]
+[ext_resource path="res://entities/SparklingWater/SparklingWater_model.tscn" type="PackedScene" id=2]
+
+[node name="SparklingWater" type="Spatial"]
+script = ExtResource( 1 )
+
+[node name="sparkling" parent="." instance=ExtResource( 2 )]
+transform = Transform( 0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0, 0, 0 )
