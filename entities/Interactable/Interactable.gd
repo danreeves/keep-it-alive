@@ -15,7 +15,7 @@ var is_using = false
 func is_colliding():
 	var location_on_floor = self.translation
 	location_on_floor.y = 0
-	return location_on_floor.distance_to(player.translation) < 2.2
+	return location_on_floor.distance_to(player.translation) < 3
 
 func _ready() -> void:
 	world = get_tree().get_root().get_node("Game")

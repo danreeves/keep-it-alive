@@ -16,6 +16,5 @@ func init() -> void:
 	var player = find_node("Player")
 	interactable_container.picking_up = true
 	interactable_container.reparent(interactable_container, player)
-	interactable_container.debug = true
 	
 	first_plant.init(1)

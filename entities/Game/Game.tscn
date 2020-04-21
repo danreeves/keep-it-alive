@@ -27,7 +27,7 @@ transform = Transform( -0.593644, 0, -0.804728, 0, 1, 0, 0.804728, 0, -0.593644,
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 13.335, 0, 5.27 )
 
 [node name="WateringCan" parent="." instance=ExtResource( 3 )]
-transform = Transform( -0.652323, 0, 0.757941, 0, 1, 0, -0.757941, 0, -0.652323, 12.1133, 3.55099, -3.01323 )
+transform = Transform( -0.652323, 0, 0.757941, 0, 1, 0, -0.757941, 0, -0.652323, 12.1133, 2.99117, -3.01323 )
 
 [node name="Pizza" parent="." instance=ExtResource( 5 )]
 transform = Transform( -0.998555, 0, 0.05373, 0, 1, 0, -0.05373, 0, -0.998555, 10.7368, 1.60759, 15.6959 )
@@ -35,13 +35,13 @@ transform = Transform( -0.998555, 0, 0.05373, 0, 1, 0, -0.05373, 0, -0.998555, 1
 [node name="Clock" parent="." instance=ExtResource( 6 )]
 
 [node name="WakeUpPoint" type="Spatial" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 29.4221, 0, -13.5541 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 40.5618, 0, 4.67129 )
 
 [node name="Candle" parent="." instance=ExtResource( 7 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 27.8096, 2.37564, -18.6385 )
 
 [node name="FilteredWater" parent="." instance=ExtResource( 8 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.925533, 3.463, -8.72544 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.925533, 3.09907, -9.84026 )
 
 [node name="SparklingWater" parent="." instance=ExtResource( 9 )]
 transform = Transform( -0.817477, 0, -0.575961, 0, 1, 0, 0.575961, 0, -0.817477, 6.87264, 1.56253, 15.7873 )
@@ -50,7 +50,7 @@ transform = Transform( -0.817477, 0, -0.575961, 0, 1, 0, 0.575961, 0, -0.817477,
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 38.118, 3.8445, 10.7467 )
 
 [node name="Lamp" parent="." instance=ExtResource( 11 )]
-transform = Transform( -1, 0, -3.25841e-07, 0, 1, 0, 3.25841e-07, 0, -1, 32.6301, 4.14793, -6.43741 )
+transform = Transform( -1, 0, -3.25841e-07, 0, 1, 0, 3.25841e-07, 0, -1, 31.7506, 3.89271, -6.43741 )
 
 [node name="Ramen" parent="." instance=ExtResource( 12 )]
 transform = Transform( -1, 0, -3.25841e-07, 0, 1, 0, 3.25841e-07, 0, -1, 5.77822, 3.10998, -0.268113 )
@@ -66,7 +66,7 @@ transform = Transform( -0.593644, 0, -0.804728, 0, 1, 0, 0.804728, 0, -0.593644,
 script = ExtResource( 16 )
 
 [node name="Camera" type="Camera" parent="CameraRig"]
-transform = Transform( 1, 0, 2.98023e-08, 0, 1, 0, -2.98023e-08, 0, 1, 14.0197, 17.6321, -10.3423 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 14.0197, 33.7362, -10.3423 )
 current = true
 far = 299.9
 script = ExtResource( 15 )
