@@ -34,7 +34,7 @@ func _process(delta: float) -> void:
 		
 func _input(event):
 	if event is InputEventMouseButton:
-		if event.is_pressed():
+		if event.is_pressed() and (event.button_index == 1 or event.button_index == 2):
 			var camera = get_parent().find_node("Camera")
 			var from = camera.project_ray_origin(event.position)
 			var to = from + camera.project_ray_normal(event.position) * ray_length
