@@ -18,3 +18,4 @@ func init() -> void:
 	interactable_container.reparent(interactable_container, player)
 	
 	first_plant.init(1)
+	

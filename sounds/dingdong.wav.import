@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/dingdong.wav-8f8a3032d8b331f34af5a11b6a7b28fa.sample"
+
+[deps]
+
+source_file="res://sounds/dingdong.wav"
+dest_files=[ "res://.import/dingdong.wav-8f8a3032d8b331f34af5a11b6a7b28fa.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

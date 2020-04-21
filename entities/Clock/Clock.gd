@@ -14,6 +14,7 @@ var day = 1
 var new_day_timer = 0
 var plants_checked_for_day = true
 var camera_rig = null
+var ding_dong = null
 
 func _ready() -> void:
 	world = get_tree().get_root().get_node("Game")
@@ -23,6 +24,7 @@ func _ready() -> void:
 	clock_hand = find_node("ClockHand")
 	screen_wipe = find_node("ScreenWipe")
 	screen_wipe.modulate = Color(1, 1, 1, 0.0)
+	ding_dong = find_node("DingDong")
 	
 func _process(delta: float) -> void:
 	if not paused:
@@ -78,3 +80,4 @@ func get_new_plant():
 	interactable_container.reparent(interactable_container, player)
 	
 	new_plant.init(day)
+	ding_dong.play()
